@@ -1,25 +1,21 @@
-from buku import Buku
-from anggota import Anggota
-from perpustakaan import Perpustakaan
+from book import Book
+from member import Member
+from staff import Staff
+from borrow_transaction import BorrowTransaction
 
-# Membuat perpustakaan
-perpus = Perpustakaan("Perpustakaan Kota")
+# Membuat objek
+book1 = Book("Python Dasar", "Andi", "12345")
+member1 = Member("Ahmad", "M01")
+staff1 = Staff("Budi", "S01")
 
-# Membuat buku
-buku1 = Buku("Matematika", "Budi")
-print(buku1)
-buku2 = Buku("Fisika", "Andi")
-
-# Membuat anggota
-anggota1 = Anggota("Ahmad", "155")
-
-# Menambahkan buku & anggota ke perpustakaan
-perpus.tambah_buku(buku1)
-perpus.tambah_buku(buku2)
-perpus.tambah_anggota(anggota1)
+# Membuat transaksi
+transaction1 = BorrowTransaction(book1, member1, staff1, "24-02-2026")
 
 # Proses peminjaman
-perpus.pinjam_buku(anggota1, buku1)
+transaction1.borrow_book()
+
+# Coba pinjam lagi (harus gagal)
+transaction1.borrow_book()
 
 # Proses pengembalian
-perpus.kembalikan_buku(anggota1, buku1)
+transaction1.return_book()
